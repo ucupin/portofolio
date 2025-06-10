@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Yusuf Imanuel</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js untuk Interaktivitas -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09; /* Warna latar belakang hitam pekat */
+            color: #e5e7eb; /* Warna teks default */
+        }
+
+        /* Efek gradien dan blur untuk bentuk di latar belakang */
+        .gradient-blur {
+            filter: blur(80px); /* Efek blur yang kuat */
+            opacity: 0.6;
+        }
+        
+        /* Efek untuk bola-bola di pojok kiri atas */
+        .top-sphere {
+             filter: blur(20px); /* Efek blur yang lebih ringan */
+             opacity: 0.7;
+        }
+
+        /* Gaya untuk teks vertikal */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg); /* Memutar teks agar terbaca dari atas ke bawah */
+        }
+
+        /* Transisi halus untuk konten yang muncul/hilang */
+        [x-cloak] { display: none !important; }
+        .transition-enter-active, .transition-leave-active {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .transition-enter-from, .transition-leave-to {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .transition-enter-to, .transition-leave-from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .experience-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body x-data="{ activeTab: 'magang' }">
+
+    <!-- ======================================================= -->
+    <!-- Elemen Bentuk Dekoratif di Latar Belakang               -->
+    <!-- ======================================================= -->
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <!-- Lingkaran gradien ungu besar di kanan -->
+        <div class="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-[40rem] h-[40rem] sm:w-[50rem] sm:h-[50rem] lg:w-[60rem] lg:h-[60rem] bg-gradient-to-tr from-purple-900 via-transparent to-transparent rounded-full gradient-blur"></div>
+        
+        <!-- Bola-bola ungu di kiri atas -->
+        <div class="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4">
+            <div class="relative w-48 h-48 sm:w-64 sm:h-64">
+                <div class="absolute w-full h-full rounded-full bg-gradient-to-br from-purple-600 to-fuchsia-800 top-sphere"></div>
+                <div class="absolute w-full h-full rounded-full bg-gradient-to-tl from-purple-600 to-fuchsia-800 top-sphere" style="left: -40%; top: 5%;"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======================================================= -->
+    <!-- BAGIAN 1: HALAMAN UTAMA (HERO SECTION)                  -->
+    <!-- ======================================================= -->
+    <section id="home" class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-8">
+        <main class="container mx-auto grid grid-cols-1 md:grid-cols-12 items-center gap-8 relative z-10">
+            
+            <!-- Teks Vertikal -->
+            <div class="hidden md:block md:col-span-1">
+                <p class="vertical-text text-gray-500 font-bold tracking-[0.3em] text-sm">2 0 2 5</p>
+            </div>
+
+            <!-- Kolom Gambar -->
+            <div class="md:col-span-5 w-full flex justify-center md:justify-start">
+                 <div class="relative w-[300px] h-[450px] sm:w-[350px] sm:h-[525px] group">
+                    <img src="https://i.imgur.com/vVBbBox.jpeg" 
+                         alt="Foto Profil Yusuf Imanuel" 
+                         class="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl transition-transform duration-500 ease-in-out group-hover:scale-105">
+                </div>
+            </div>
+
+            <!-- Kolom Teks -->
+            <div class="md:col-span-6 text-center md:text-left space-y-6">
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-none">
+                    PORTOFOLIO
+                </h1>
+                <div class="space-y-4 max-w-md mx-auto md:mx-0">
+                    <p class="text-xl sm:text-2xl font-light text-gray-200">
+                        Hi, saya Yusuf Imanuel seorang <span class="font-semibold text-white">Product and Project Manager</span>
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Saya seorang manajer produk dan proyek yang berpengalaman dalam memimpin tim lintas fungsi untuk memberikan produk yang luar biasa, dari ide hingga peluncuran.
+                    </p>
+                </div>
+                
+                <!-- Tombol Panah (diubah menjadi link) -->
+                <div class="pt-4 flex justify-center md:justify-start">
+                    <a href="#experience" class="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white/50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 animate-bounce" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- BAGIAN 2: PENGALAMAN                                    -->
+    <!-- ======================================================= -->
+    <section id="experience" class="min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div class="container mx-auto text-center space-y-8 max-w-4xl">
+            <h2 class="text-4xl font-bold">Pengalaman Saya</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Berikut adalah beberapa pengalaman saya selama masa studi, baik di dunia profesional melalui magang maupun dalam kegiatan organisasi di kampus.
+            </p>
+
+            <!-- Tombol Opsi -->
+            <div class="flex justify-center space-x-4">
+                <button @click="activeTab = 'magang'" 
+                        :class="{'bg-white text-black': activeTab === 'magang', 'bg-white/10 hover:bg-white/20': activeTab !== 'magang'}"
+                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                    Magang
+                </button>
+                <button @click="activeTab = 'organisasi'"
+                        :class="{'bg-white text-black': activeTab === 'organisasi', 'bg-white/10 hover:bg-white/20': activeTab !== 'organisasi'}"
+                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                    Organisasi
+                </button>
+            </div>
+
+            <!-- Kontainer Konten -->
+            <div class="pt-8">
+                <!-- Konten Magang -->
+                <div x-show="activeTab === 'magang'" x-transition.opacity.duration.500ms class="space-y-6" x-cloak>
+                    <div class="experience-card">
+                        <h3 class="font-bold text-lg text-white">Product Manager</h3>
+                        <p class="text-gray-400 text-sm mb-3">Kementrian Pendidikan dan Kebudayaan | Agustus - Desember 2023</p>
+                        <p class="text-gray-300 leading-relaxed">Memimpin pengembangan Super-aplikasi Satudikti berdasarkan target yang diberikan oleh para pemangku kepentingan, dengan mengimplementasikan metode Agile Scrum dalam prosesnya. Tanggung jawab ini mencakup memimpin semua pertemuan penting seperti Perencanaan Sprint, Tinjauan Sprint, Rapat Harian, dan Retrospeksi Sprint. Selain itu, saya juga menyusun dokumen kebutuhan pengembangan seperti Dokumen Kebutuhan Produk (Product Requirement Document), membuat linimasa pengembangan, serta mendefinisikan seluruh tugas untuk setiap peran yang terlibat dalam tim pengembangan Super-aplikasi Satudikti.</p>
+                        <div class="mt-4">
+                            <a href="https://satudikti.id/" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300 group">
+                                Kunjungi Situs <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <h3 class="font-bold text-lg text-white">Project Manager</h3>
+                        <p class="text-gray-400 text-sm mb-3">PT Permodalan Nasional Madani | Februari - Juni 2024</p>
+                        <p class="text-gray-300 leading-relaxed">Bertanggung jawab untuk mengidentifikasi masalah, mengumpulkan data, menganalisis pengukuran, dan melakukan evaluasi sesuai kebutuhan proyek. Tugas saya meliputi pembuatan linimasa proyek dan memastikan kemajuannya berjalan sesuai jadwal yang telah ditetapkan. Selain itu, saya membuat seluruh dokumen proyek berdasarkan standar yang berlaku di perusahaan. Saya juga memastikan bahwa ruang lingkup proyek selaras dengan kebutuhan pengguna serta kinerja Teknologi Informasi agar sejalan dengan Rencana Strategis TI. Terakhir, saya menyiapkan dan menyajikan laporan untuk memberikan pembaruan mengenai perkembangan proyek kepada para pemangku kepentingan.</p>
+                        <div class="mt-4">
+                            <a href="https://www.pnm.co.id/" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300 group">
+                                Kunjungi Situs <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <h3 class="font-bold text-lg text-white">Class Manager</h3>
+                        <p class="text-gray-400 text-sm mb-3">Dibimbing.id | Oktober 2024 - April 2025</p>
+                        <p class="text-gray-300 leading-relaxed">Mengelola kelancaran pelaksanaan kelas harian untuk memastikan setiap sesi berjalan secara efektif. Sepanjang program, saya bertugas membimbing siswa dengan menawarkan dukungan dan sumber daya yang diperlukan. Selain itu, saya memoderasi kelas mingguan untuk mendorong keterlibatan dan diskusi aktif, serta menjadi moderator untuk acara-acara eksternal yang terkait dengan kelas. Tanggung jawab saya juga mencakup pengawasan penilaian dan pemberian nilai siswa untuk memastikan keadilan dan ketepatan waktu. Di luar itu, saya melakukan riset mengenai perjalanan pelanggan (customer journey) untuk terus meningkatkan pengalaman belajar secara keseluruhan.</p>
+                        <div class="mt-4">
+                            <a href="https://dibimbing.id/" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300 group">
+                                Kunjungi Situs <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="experience-card">
+                        <h3 class="font-bold text-lg text-white">Project Manager IT</h3>
+                        <p class="text-gray-400 text-sm mb-3">Kawan Kerja | Maret - Juli 2024</p>
+                        <p class="text-gray-300 leading-relaxed">Saya bertanggung jawab untuk mengembangkan rencana, anggaran, dan linimasa proyek, serta mengarahkan tim dan mengalokasikan tugas berdasarkan keahlian masing-masing. Dalam peran ini, saya bertindak sebagai penghubung utama antara tim dan para pemangku kepentingan. Selain itu, saya juga bertugas mengidentifikasi dan memitigasi potensi risiko proyek, serta mengawasi kemajuan dan mengevaluasi hasil akhir untuk memastikan tujuan tercapai.</p>
+                        <div class="mt-4">
+                            <a href="https://kawankerja.id/" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300 group">
+                                Kunjungi Situs <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="experience-card">
+                        <h3 class="font-bold text-lg text-white">Product Development</h3>
+                        <p class="text-gray-400 text-sm mb-3">Smartpath | April - Juli 2024</p>
+                        <p class="text-gray-300 leading-relaxed">Membangun kurikulum pembelajaran untuk program konsultasi dan bimbingan karier, serta mengembangkan dan melakukan riset terhadap kelas-kelas pakar di perusahaan lain. Tugas saya juga mencakup analisis perjalanan pelanggan (customer journey) untuk meningkatkan pengalaman belajar. Selain itu, saya berperan sebagai manajer kelas yang bertugas mengelola seluruh kelas yang diselenggarakan di Smartpath. Saya juga aktif berkolaborasi dengan berbagai institusi pendidikan dan industri untuk mengembangkan program serta menemukan solusi inovatif bagi permasalahan di dunia pendidikan.</p>
+                        <div class="mt-4">
+                            <a href="https://www.instagram.com/smartpath.id/" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300 group">
+                                Kunjungi Situs <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kontainer Konten Organisasi -->
+                <div x-show="activeTab === 'organisasi'" x-transition.opacity.duration.500ms class="max-w-3xl mx-auto" x-cloak>
+                    <div class="experience-card">
+                         <h3 class="font-bold text-lg text-white">Himpunan Mahasiswa Informatika - Masa Bakti 21/22 & 22/23</h3>
+                         <p class="text-gray-300 leading-relaxed mt-3">Memimpin pembuatan dan penjualan merchandise khusus informatika seperti kaus, gantungan kunci, stiker, dan totebag untuk memperoleh keuntungan bagi organisasi. Merancang aktivitas yang dapat meningkatkan semangat kewirausahaan mahasiswa informatika, serta mengembangkan program yang mengakomodasi minat dan bakat mereka di bidang kewirausahaan.</p>
+                         <div class="mt-4">
+                            <a href="https://hmifunej.id/" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300 group">
+                                Kunjungi Situs <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- FOOTER                                                  -->
+    <!-- ======================================================= -->
+    <footer class="fixed bottom-0 left-0 w-full p-4 flex justify-center items-center z-20">
+        <div class="bg-black/20 backdrop-blur-lg rounded-full p-2 flex items-center space-x-4">
+            <a href="https://www.linkedin.com/in/yusuf-immanuel/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/immanuel.yusuf" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg>
+            </a>
+            <a href="https://github.com/ucupin" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
